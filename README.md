@@ -10,13 +10,17 @@ Usage: ./ddns CFKEY 1234567890 CFUSER user@example.com CFZONE_NAME example.com C
 
 ### amd64
 ````
-CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build -o ddns cf_ddns.go
+CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build -o ddns -tags netgo -ldflags '-s -w -extldflags "-static"' cf_ddns.go
+````
+### arm64
+````
+CGO_ENABLED=0 GOOS=linux GOARCH=arm64 go build -o ddns -tags netgo -ldflags '-s -w -extldflags "-static"' cf_ddns.go
 ````
 ### armv7
 ````
-CGO_ENABLED=0 GOOS=linux GOARCH=arm GOARM=7 go build -o ddns -v -ldflags "-s -w" cf_ddns.go
+CGO_ENABLED=0 GOOS=linux GOARCH=arm GOARM=7 go build -o ddns -tags netgo -ldflags '-s -w -extldflags "-static"' cf_ddns.go
 ````
 ### mipsle
 ````
-CGO_ENABLED=0 GOOS=linux GOARCH=mipsle go build -o ddns -v -ldflags "-s -w" cf_ddns.go
+CGO_ENABLED=0 GOOS=linux GOARCH=mipsle go build -o ddns -tags netgo -ldflags '-s -w -extldflags "-static"' cf_ddns.go
 ````
